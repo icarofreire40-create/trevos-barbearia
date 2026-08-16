@@ -47,7 +47,6 @@ BARBEIROS.forEach((b) => {
 });
 
 document.getElementById("btn-to-data").addEventListener("click", () => showStep(1));
-document.getElementById("btn-back-1").addEventListener("click", () => showStep(0));
 
 // ---------- Passo 2: escolher data ----------
 const dateInput = document.getElementById("date-input");
