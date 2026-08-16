@@ -32,7 +32,7 @@ BARBEIROS.forEach((b) => {
   const card = document.createElement("div");
   card.className = "barber-card";
   card.innerHTML = `
-    <div class="barber-avatar">${b.initials}</div>
+    <img class="barber-avatar" src="${b.foto}" alt="${b.name}">
     <h3>${b.name}</h3>
     <p>Toque para escolher</p>
   `;
