@@ -23,6 +23,12 @@ function showStep(index) {
     dot.classList.toggle("current", i === index);
     dot.classList.toggle("done", i < index);
   });
+  const trackFill = document.getElementById("step-track-fill");
+  if (trackFill) {
+    const totalDots = 4; // barbeiro, data, horário, dados
+    const progresso = Math.min(index, totalDots - 1) / (totalDots - 1);
+    trackFill.style.width = `${progresso * 156}px`;
+  }
   currentStepIndex = index;
 }
 
