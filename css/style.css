@@ -163,11 +163,18 @@ a { color: inherit; }
   transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
   opacity: 0;
   animation: heroRise 0.7s ease forwards 0.42s;
+  /* Forces Safari (iOS/macOS) to respect overflow:hidden + border-radius clipping.
+     Without this, negative z-index children can leak outside the rounded pill shape. */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+.whatsapp-btn > * {
+  position: relative;
+  z-index: 1;
 }
 .whatsapp-btn::after {
   content: "";
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   right: 4px;
   top: -30%;
   width: 26px;
