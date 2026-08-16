@@ -175,14 +175,12 @@ a { color: inherit; }
 .barber-card.selected { border-color: var(--green-bright); background: var(--bg-panel-raised); }
 
 .barber-avatar {
-  width: 68px; height: 68px;
+  width: 88px; height: 88px;
   margin: 0 auto 14px;
   border-radius: 50%;
-  background: var(--green);
-  color: var(--cream);
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Rye', serif;
-  font-size: 1.4rem;
+  object-fit: cover;
+  border: 2px solid var(--gold-dim);
+  display: block;
 }
 
 .barber-card h3 { color: var(--cream); font-family: 'Work Sans', sans-serif; font-weight: 700; font-size: 1.05rem; }
