@@ -168,17 +168,17 @@ a { color: inherit; }
   content: "";
   position: absolute;
   z-index: -1;
-  right: -30px;
-  top: -60%;
-  width: 46px;
-  height: 220%;
+  right: 4px;
+  top: -30%;
+  width: 26px;
+  height: 160%;
   background: repeating-linear-gradient(
     -45deg,
-    var(--pole-red) 0px, var(--pole-red) 8px,
-    var(--cream) 8px, var(--cream) 16px,
-    var(--pole-blue) 16px, var(--pole-blue) 24px
+    var(--pole-red) 0px, var(--pole-red) 6px,
+    var(--cream) 6px, var(--cream) 12px,
+    var(--pole-blue) 12px, var(--pole-blue) 18px
   );
-  opacity: 0.35;
+  opacity: 0.22;
 }
 .whatsapp-btn:hover { transform: translateY(-1px); background: #4fbb72; box-shadow: 0 10px 26px rgba(63, 157, 95, 0.35); }
 
