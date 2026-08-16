@@ -20,8 +20,8 @@ export const auth = getAuth(app);
 // Para adicionar/remover barbeiro, edite esta lista.
 // id: usado internamente | name: aparece no site | initials: avatar
 export const BARBEIROS = [
-  { id: "little-hair", name: "Little Hair", initials: "LH" },
-  { id: "kevin-moraes", name: "Kevin Moraes", initials: "KM" }
+  { id: "little-hair", name: "Little Hair", initials: "LH", foto: "img/little-hair.jpg" },
+  { id: "kevin-moraes", name: "Kevin Moraes", initials: "KM", foto: "img/kevin-moraes.jpg" }
 ];
 
 // Horário de funcionamento por dia da semana (0 = domingo ... 6 = sábado)
@@ -35,5 +35,5 @@ export const HORARIOS = {
   // domingo fechado (0 não existe no objeto)
 };
 
-export const DURACAO_SLOT_MIN = 40; // duração de cada horário de atendimento
+export const DURACAO_SLOT_MIN = 60; // duração de cada horário de atendimento
 export const WHATSAPP_NUMERO = "5562995561644";
