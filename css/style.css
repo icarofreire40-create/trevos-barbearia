@@ -157,27 +157,40 @@ a { color: inherit; }
 
 .hero > .container { position: relative; z-index: 1; }
 
-.logo {
-  width: 118px;
-  height: 118px;
-  border-radius: 50%;
-  border: 1px solid var(--hairline);
-  padding: 6px;
-  object-fit: cover;
-  box-shadow: var(--shadow-soft);
-  opacity: 0;
-  animation: heroRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+/* Two-column hero: identity on the left, a contact "plaque" on the
+   right — a business card read, instead of one long centered stack. */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 56px;
+  text-align: left;
 }
+
+.hero-identity { display: flex; flex-direction: column; align-items: flex-start; }
 
 @keyframes heroRise {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
+.logo {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  border: 1px solid var(--hairline);
+  padding: 5px;
+  object-fit: cover;
+  box-shadow: var(--shadow-soft);
+  opacity: 0;
+  animation: heroRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
 .brand-name {
-  font-size: clamp(2.6rem, 7vw, 4rem);
+  font-size: clamp(2.6rem, 5.2vw, 3.8rem);
   font-weight: 600;
-  margin-top: 22px;
+  margin-top: 20px;
+  line-height: 1.05;
   opacity: 0;
   animation: heroRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.1s;
 }
@@ -189,7 +202,7 @@ a { color: inherit; }
   letter-spacing: 3.5px;
   text-transform: uppercase;
   font-size: 0.7rem;
-  margin-top: 12px;
+  margin-top: 16px;
   padding-top: 12px;
   position: relative;
   opacity: 0;
@@ -198,33 +211,52 @@ a { color: inherit; }
 .brand-tagline::before {
   content: "";
   position: absolute;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
+  top: 0; left: 0;
   width: 28px; height: 1px;
   background: var(--gold-dim);
 }
 
-.hero-meta {
-  margin-top: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 32px;
-  font-size: 0.88rem;
-  color: var(--ivory-dim);
+/* The plaque: a bordered card holding practical info + the CTA,
+   set apart from the identity block like a small brass sign. */
+.hero-plaque {
+  background: var(--bg-panel);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: 30px 32px;
   opacity: 0;
-  animation: heroRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.3s;
+  animation: heroRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.28s;
 }
 
-.hero-meta div { display: flex; align-items: center; gap: 9px; }
-.hero-meta strong { color: var(--ivory); font-weight: 600; }
+.hero-plaque-row { display: flex; align-items: flex-start; gap: 14px; }
+.hero-plaque-row + .hero-plaque-row { margin-top: 18px; }
+.hero-plaque-icon { font-size: 1rem; line-height: 1.4; opacity: 0.85; }
+.hero-plaque-label {
+  display: block;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--ivory-dim);
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+.hero-plaque-row strong { color: var(--ivory); font-weight: 600; font-size: 0.94rem; }
+
+.hero-plaque-divider {
+  height: 1px;
+  background: var(--hairline-soft);
+  margin: 20px 0;
+}
+
+.hero-meta { display: none; }
 
 .whatsapp-btn {
   position: relative;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  margin-top: 34px;
+  width: 100%;
+  margin-top: 26px;
   background: transparent;
   border: 1px solid var(--gold-dim);
   color: var(--gold-bright);
@@ -356,6 +388,58 @@ a { color: inherit; }
 .step-dot.current::before { background: var(--green-bright); }
 .step-dot.done { border-color: var(--gold); }
 .step-dot.done::before { background: var(--gold); }
+
+/* Two-column booking layout: wizard on the left, a running summary
+   on the right that fills in as each choice is made — so the person
+   always sees what they've committed to, not just where they are. */
+.booking-layout {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  align-items: start;
+  gap: 40px;
+}
+
+.booking-summary {
+  position: sticky;
+  top: 28px;
+  background: var(--bg-panel);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: 26px 24px;
+}
+
+.booking-summary-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--gold-bright);
+  margin-bottom: 18px;
+}
+
+.booking-summary-row {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--hairline-soft);
+}
+.booking-summary-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+.booking-summary-label {
+  display: block;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--ivory-dim);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.booking-summary-value {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--ivory-dim);
+  transition: color 0.2s ease;
+}
+.booking-summary-row.filled .booking-summary-value { color: var(--gold-bright); font-weight: 600; }
 
 /* Barber cards */
 .barber-grid {
@@ -518,9 +602,20 @@ footer {
 footer a { color: var(--gold-bright); text-decoration: none; }
 footer a:hover { text-decoration: underline; }
 
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+  .hero-identity { align-items: center; }
+  .brand-tagline::before { left: 50%; transform: translateX(-50%); }
+
+  .booking-layout { grid-template-columns: 1fr; }
+  .booking-summary { position: static; order: -1; }
+}
+
 @media (max-width: 480px) {
   .btn-row { flex-direction: column-reverse; }
   .btn { width: 100%; }
+  .hero { padding: 56px 0 40px; }
+  .hero-plaque { padding: 26px 24px; }
 }
 
 /* ---------- Admin panel ---------- */
