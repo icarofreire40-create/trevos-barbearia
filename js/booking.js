@@ -15,6 +15,27 @@ const state = {
 const steps = ["step-barbeiro", "step-data", "step-horario", "step-dados", "step-confirmado"];
 let currentStepIndex = 0;
 
+function formatarData(dataStr) {
+  return new Date(dataStr + "T00:00:00").toLocaleDateString("pt-BR", {
+    weekday: "long", day: "2-digit", month: "long"
+  });
+}
+
+function atualizarResumoLateral() {
+  const elBarbeiro = document.getElementById("summary-barbeiro");
+  const elData = document.getElementById("summary-data");
+  const elHorario = document.getElementById("summary-horario");
+  if (elBarbeiro) elBarbeiro.textContent = state.barberName || "—";
+  if (elData) elData.textContent = state.date ? formatarData(state.date) : "—";
+  if (elHorario) elHorario.textContent = state.time || "—";
+
+  ["barbeiro", "data", "horario"].forEach((key) => {
+    const filled = key === "barbeiro" ? !!state.barberName : key === "data" ? !!state.date : !!state.time;
+    const row = document.getElementById(`summary-row-${key}`);
+    if (row) row.classList.toggle("filled", filled);
+  });
+}
+
 function showStep(index) {
   steps.forEach((id, i) => {
     document.getElementById(id).classList.toggle("active", i === index);
@@ -48,6 +69,7 @@ BARBEIROS.forEach((b) => {
     state.barberId = b.id;
     state.barberName = b.name;
     document.getElementById("btn-to-data").disabled = false;
+    atualizarResumoLateral();
   });
   barberGrid.appendChild(card);
 });
@@ -72,6 +94,7 @@ dateInput.addEventListener("change", () => {
     document.getElementById("btn-to-horario").disabled = false;
     state.date = dateInput.value;
   }
+  atualizarResumoLateral();
 });
 
 document.getElementById("btn-to-horario").addEventListener("click", async () => {
@@ -137,6 +160,7 @@ async function carregarHorarios() {
         btn.classList.add("selected");
         state.time = slot;
         document.getElementById("btn-to-dados").disabled = false;
+        atualizarResumoLateral();
       });
     }
     timeGrid.appendChild(btn);
@@ -194,9 +218,7 @@ document.getElementById("btn-confirmar").addEventListener("click", async (e) => 
 });
 
 function preencherResumo() {
-  const dataFormatada = new Date(state.date + "T00:00:00").toLocaleDateString("pt-BR", {
-    weekday: "long", day: "2-digit", month: "long"
-  });
+  const dataFormatada = formatarData(state.date);
   document.getElementById("resumo-barbeiro").textContent = state.barberName;
   document.getElementById("resumo-data").textContent = dataFormatada;
   document.getElementById("resumo-horario").textContent = state.time;
