@@ -6,26 +6,42 @@
 <title>Trevos Barbearia — Agendar horário</title>
 <link rel="icon" href="img/logo.png">
 <link rel="apple-touch-icon" href="img/logo.png">
-<meta name="theme-color" content="#0b0f0d">
+<meta name="theme-color" content="#0a0d0b">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header class="hero">
   <div class="hero-glow"></div>
-  <div class="container">
-    <img src="img/logo.png" alt="Trevos Barbearia" class="logo">
-    <h1 class="brand-name">Trevos Barbearia</h1>
-    <p class="brand-tagline">Sorte é ter um corte na régua</p>
+  <div class="container hero-grid">
 
-    <div class="hero-meta">
-      <div>📍 <strong>Rua Coronel Diógenes, Qd 29 Lt 12A</strong></div>
-      <div>⏰ <strong>Seg–Sex 09:30–20h · Sáb 09h–19h</strong></div>
+    <div class="hero-identity">
+      <img src="img/logo.png" alt="Trevos Barbearia" class="logo">
+      <h1 class="brand-name">Trevos Barbearia</h1>
+      <p class="brand-tagline">Sorte é ter um corte na régua</p>
     </div>
 
-    <a class="whatsapp-btn" href="https://api.whatsapp.com/send?phone=5562995561644" target="_blank" rel="noopener">
-      <span>Falar no WhatsApp</span>
-    </a>
+    <div class="hero-plaque">
+      <div class="hero-plaque-row">
+        <span class="hero-plaque-icon">📍</span>
+        <div>
+          <span class="hero-plaque-label">Endereço</span>
+          <strong>Rua Coronel Diógenes, Qd 29 Lt 12A</strong>
+        </div>
+      </div>
+      <div class="hero-plaque-divider"></div>
+      <div class="hero-plaque-row">
+        <span class="hero-plaque-icon">⏰</span>
+        <div>
+          <span class="hero-plaque-label">Funcionamento</span>
+          <strong>Seg–Sex 09:30–20h · Sáb 09h–19h</strong>
+        </div>
+      </div>
+      <a class="whatsapp-btn" href="https://api.whatsapp.com/send?phone=5562995561644" target="_blank" rel="noopener">
+        <span>Falar no WhatsApp</span>
+      </a>
+    </div>
+
   </div>
 </header>
 
@@ -44,53 +60,75 @@
       <div class="step-dot">4</div>
     </div>
 
-    <!-- Passo 1: barbeiro -->
-    <div class="step" id="step-barbeiro">
-      <label class="field-label">Escolha o profissional</label>
-      <div class="barber-grid" id="barber-grid"></div>
-      <div class="btn-row" style="justify-content: flex-end;">
-        <button class="btn btn-primary" id="btn-to-data" disabled>Continuar</button>
-      </div>
-    </div>
+    <div class="booking-layout">
+      <div class="booking-main">
 
-    <!-- Passo 2: data -->
-    <div class="step" id="step-data">
-      <label class="field-label" for="date-input">Escolha o dia</label>
-      <input type="date" id="date-input">
-      <p class="empty-note" id="date-feedback" style="text-align:left; padding-left:2px;"></p>
-      <div class="btn-row">
-        <button class="btn btn-ghost" id="btn-back-2">Voltar</button>
-        <button class="btn btn-primary" id="btn-to-horario" disabled>Continuar</button>
-      </div>
-    </div>
+        <!-- Passo 1: barbeiro -->
+        <div class="step" id="step-barbeiro">
+          <label class="field-label">Escolha o profissional</label>
+          <div class="barber-grid" id="barber-grid"></div>
+          <div class="btn-row" style="justify-content: flex-end;">
+            <button class="btn btn-primary" id="btn-to-data" disabled>Continuar</button>
+          </div>
+        </div>
 
-    <!-- Passo 3: horário -->
-    <div class="step" id="step-horario">
-      <label class="field-label">Escolha o horário</label>
-      <div class="time-grid" id="time-grid"></div>
-      <div class="btn-row">
-        <button class="btn btn-ghost" id="btn-back-3">Voltar</button>
-        <button class="btn btn-primary" id="btn-to-dados" disabled>Continuar</button>
-      </div>
-    </div>
+        <!-- Passo 2: data -->
+        <div class="step" id="step-data">
+          <label class="field-label" for="date-input">Escolha o dia</label>
+          <input type="date" id="date-input">
+          <p class="empty-note" id="date-feedback" style="text-align:left; padding-left:2px;"></p>
+          <div class="btn-row">
+            <button class="btn btn-ghost" id="btn-back-2">Voltar</button>
+            <button class="btn btn-primary" id="btn-to-horario" disabled>Continuar</button>
+          </div>
+        </div>
 
-    <!-- Passo 4: dados -->
-    <div class="step" id="step-dados">
-      <label class="field-label" for="client-name">Seu nome</label>
-      <input type="text" id="client-name" placeholder="Nome completo" style="margin-bottom:16px;">
-      <label class="field-label" for="client-phone">Seu WhatsApp</label>
-      <input type="tel" id="client-phone" placeholder="(62) 9xxxx-xxxx">
-      <div class="btn-row">
-        <button class="btn btn-ghost" id="btn-back-4">Voltar</button>
-        <button class="btn btn-primary" id="btn-confirmar" disabled>Confirmar agendamento</button>
+        <!-- Passo 3: horário -->
+        <div class="step" id="step-horario">
+          <label class="field-label">Escolha o horário</label>
+          <div class="time-grid" id="time-grid"></div>
+          <div class="btn-row">
+            <button class="btn btn-ghost" id="btn-back-3">Voltar</button>
+            <button class="btn btn-primary" id="btn-to-dados" disabled>Continuar</button>
+          </div>
+        </div>
+
+        <!-- Passo 4: dados -->
+        <div class="step" id="step-dados">
+          <label class="field-label" for="client-name">Seu nome</label>
+          <input type="text" id="client-name" placeholder="Nome completo" style="margin-bottom:16px;">
+          <label class="field-label" for="client-phone">Seu WhatsApp</label>
+          <input type="tel" id="client-phone" placeholder="(62) 9xxxx-xxxx">
+          <div class="btn-row">
+            <button class="btn btn-ghost" id="btn-back-4">Voltar</button>
+            <button class="btn btn-primary" id="btn-confirmar" disabled>Confirmar agendamento</button>
+          </div>
+        </div>
+
       </div>
+
+      <aside class="booking-summary" id="booking-summary">
+        <span class="booking-summary-title">Seu agendamento</span>
+        <div class="booking-summary-row" id="summary-row-barbeiro">
+          <span class="booking-summary-label">Profissional</span>
+          <span class="booking-summary-value" id="summary-barbeiro">—</span>
+        </div>
+        <div class="booking-summary-row" id="summary-row-data">
+          <span class="booking-summary-label">Data</span>
+          <span class="booking-summary-value" id="summary-data">—</span>
+        </div>
+        <div class="booking-summary-row" id="summary-row-horario">
+          <span class="booking-summary-label">Horário</span>
+          <span class="booking-summary-value" id="summary-horario">—</span>
+        </div>
+      </aside>
     </div>
 
     <!-- Passo 5: confirmado -->
     <div class="step" id="step-confirmado">
       <div class="confirm-card">
         <div class="clover">🍀</div>
-        <h3 style="color: var(--cream); font-family:'Work Sans',sans-serif;">Agendamento confirmado!</h3>
+        <h3 style="color: var(--ivory); font-family:'Work Sans',sans-serif;">Agendamento confirmado!</h3>
         <div class="confirm-summary">
           <div><span>Barbeiro</span><span id="resumo-barbeiro"></span></div>
           <div><span>Data</span><span id="resumo-data"></span></div>
